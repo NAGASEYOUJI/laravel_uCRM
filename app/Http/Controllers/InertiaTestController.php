@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\InertiaTest;  //ﾃｰﾌﾞﾙ操作時はつける
+use App\Models\InertiaTest;  
 
 class InertiaTestController extends Controller
 {
@@ -27,10 +27,9 @@ class InertiaTestController extends Controller
       //  dd($id);
       return Inertia::render('Inertia/show',
       [
-         'id' => $id
-
-      ]
-   );
+         'id' => $id,
+         'blog' => InertiaTest::findOrFail($id)
+      ]);
    }
 
    public function store(Request $request)
@@ -53,4 +52,16 @@ class InertiaTestController extends Controller
 
    }
 
+   public function delete($id)
+   {
+      $book = InertiaTest::findOrFail($id);
+      $book->delete();
+
+      return to_route('inertia.index')
+      ->with([
+          'message' =>'削除しました'
+      ]);
+   }
+
+ 
 }
