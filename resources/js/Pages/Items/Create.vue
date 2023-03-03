@@ -3,10 +3,11 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head,Link } from '@inertiajs/vue3';
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 
 defineProps({
-    errors: Object
-})
+    errors : Object
+  })
 
 const form = reactive({
      name: null,
@@ -38,6 +39,7 @@ const storeItem = () => {
                     <div class="p-6 text-gray-900">
                         
                         <section class="text-gray-600 body-font relative">
+                         <BreezeValidationErrors :errors="errors" />    
                          <form @submit.prevent="storeItem">   
                         <div class="container px-5 py-3 mx-auto">
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">

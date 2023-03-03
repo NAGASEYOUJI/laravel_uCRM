@@ -3,9 +3,12 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head,Link } from '@inertiajs/vue3';
 import { reactive } from 'vue'
 import { Inertia } from '@inertiajs/inertia'
- 
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
+
+
 const props = defineProps({
-    item: Object
+    item: Object,
+    errors: Object
 })
 
 const form = reactive({
@@ -35,7 +38,7 @@ const  updateItem = id => {
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 text-gray-900">
-                        
+                        <BreezeValidationErrors :errors="errors" />
                         <section class="text-gray-600 body-font relative">
                           <form @submit.prevent="updateItem(form.id)">
                             <div class="container px-5 py-3 mx-auto">
