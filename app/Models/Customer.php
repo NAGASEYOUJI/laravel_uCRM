@@ -20,6 +20,4 @@ class Customer extends Model
              }
         }
     }
-
-
 }
