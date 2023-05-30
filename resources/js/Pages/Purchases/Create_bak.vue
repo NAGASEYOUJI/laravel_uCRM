@@ -11,10 +11,6 @@ const props = defineProps({
 
 const itemList = ref([])
 
-const props = defineProps({
-    'customers': Array,
-    'items' : Array
-})
 
 const form = reactive({
     date: null,
